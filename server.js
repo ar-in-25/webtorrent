@@ -37,7 +37,9 @@ app.get('/files', (req, res, next) => {
 })
 app.post('/files', (req, res, next) => {
     console.log(req.body)
-    torrentlist.unshift(req.body)
+    if(torrentlist.filter(x => x.name == req.body.name).length == 0){
+        torrentlist.unshift(req.body)
+    }
     return res.status(200).json("Success")
 })
 
