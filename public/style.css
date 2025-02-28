@@ -1,0 +1,80 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: #41644A;
+}
+
+#videocontainer {
+    display: flex;
+
+    video {
+        width: 320px;
+        height: 180px;
+        margin: auto;
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+button {
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+    background-color: #41644A;
+    color: #F1F0E9;
+    border-radius: 8px;
+}
+
+
+#clone {
+    padding: 8px;
+    background-color: #0D4715;
+    color: #F1F0E9;
+    border-radius: 6px;
+    margin: 8px auto;
+    word-wrap: break-word;
+
+    span {
+        font-size: 12px;
+        display: inline-block;
+        padding: 4px;
+    }
+}
+
+.tabbuttoncontainer {
+    padding: 8px;
+    display: flex;
+    justify-content: space-evenly;
+
+    button {
+        padding: 16px;
+        background-color: #0D4715;
+        width: 49%;
+        border-radius: 6px;
+    }
+}
+
+#uploadtab {
+    button {
+        background-color: #0D4715;
+    }
+}
+
+input {
+    height: 32px;
+    font-size: 16px;
+    padding: 8px;
+    background-color: transparent;
+    color: #F1F0E9;
+    outline-color: transparent;
+    &::placeholder{
+        color: #F1F0E9;
+    }
+}

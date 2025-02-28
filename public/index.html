@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./style.css">
+	<script src="https://cdn.jsdelivr.net/npm/webtorrent@1.8.0/webtorrent.min.js"></script>
+</head>
+
+<body>
+	<div id="videocontainer"></div>
+
+	<div class="tabbuttoncontainer hidden">
+	<button id="downloadtabbutton">Watch</button>
+	<button id="uploadtabbutton">Upload</button>
+	</div>
+
+	<div id="downloadtab">
+		<input id="videofile" type="file" accept="video/mp4,video/webm,video/mkv"/>
+		<div id="downloadedvideocontainer"></div>
+	</div>
+
+	<div id="uploadtab" class="hidden">
+		<!-- <input id="videotitle" type="text" maxlength="20" placeholder="Title"/> -->
+		<input id="videofile" type="file" accept="video/mp4,video/webm,video/mkv"/>
+		<!-- <br/><br/> -->
+		<!-- <button id="uploadbutton">Upload</button> -->
+		<div id="uploadedvideocontainer"></div>
+	</div>
+
+	<div id="clone" class="hidden">
+		<h2 id="title"></h2>
+		<h5 id="size"></h5>
+		<div id="details" class="hidden">
+			<span id="progress">Progress: 0%</span>
+			<br>
+			<span id="torrentLength">Torrent length: 00:00</span>
+			<span id="timeRemaining">Time remaining: 00:00</span>
+			<span id="downloaded">Downloaded: 0 MB</span>
+			<span id="uploaded">Uploaded: 0 MB</span>
+			<span id="downloadSpeed">Download speed: 0 KB/s</span>
+			<span id="uploadSpeed">Upload speed: 0 KB/s</span>
+			<span id="ratio">Ratio: 0.00</span>
+			<span id="peers">Peers: 0</span>
+		</div>
+		<button id="playVideo">Play</button>
+		<button id="deleteVideo">Delete</button>
+		<button id="seedVideo">Seed</button>
+		<button id="pauseVideo" class="hidden">Pause Seeding</button>
+		<button id="resumeVideo" class="hidden">Resume Seeding</button>
+	</div>
+
+	<script src="./main.js" type="module"></script>
+</body>
+
+</html>
