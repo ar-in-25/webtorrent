@@ -81,8 +81,7 @@ export function downloadTorrentAndSeed(torrenthash, clonedContainer) {
     }
 }
 
-export function seedTorrent(file) {
-    console.log(file)
+export function seedTorrent(file, clonedContainer) {
     if (file) {
         client.seed(file, (torrent) => {
             let body = {
@@ -92,12 +91,22 @@ export function seedTorrent(file) {
             }
             sendFiles(body).then(() => { getVideoDetails()})
 
-            torrent.on('upload', () => {
+            updateTorrentDetails(torrent, clonedContainer)
 
+            torrent.on('done', function () {
+                updateTorrentDetails(torrent, clonedContainer)
+            })
+
+            torrent.on('download', function () {
+                updateTorrentDetails(torrent, clonedContainer)
+            })
+
+            torrent.on('upload', () => {
+                updateTorrentDetails(torrent, clonedContainer)
             })
 
             torrent.on('wire', () => {
-
+                updateTorrentDetails(torrent, clonedContainer)
             })
         })
     }
