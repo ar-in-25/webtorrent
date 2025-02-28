@@ -26,5 +26,6 @@ export async function getVideoDetails(){
 //upload functionality
 // document.getElementById('uploadbutton').addEventListener('click', uploadFile)
 document.getElementById('videofile').addEventListener('change',(element) => {uploadFile(element.target.files[0]); element.target.value = ''})
+document.getElementById('refresh').addEventListener('click',getVideoDetails)
 
 getVideoDetails()

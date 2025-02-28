@@ -78,3 +78,9 @@ input {
         color: #F1F0E9;
     }
 }
+
+#refresh{
+    background-color: #0D4715;
+    display: block;
+    margin: auto;
+}

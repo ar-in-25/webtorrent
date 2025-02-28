@@ -28,13 +28,13 @@ app.post('/files', (req, res, next) => {
     return res.status(200).json(torrentlist)
 })
 
-app.listen(3000, () => {})
+// app.listen(3000, () => {})
 
-//create prod server
-// const options = {
-//     key: fs.readFileSync('/etc/letsencrypt/live/bharattube.xyz/privkey.pem'),
-//     cert: fs.readFileSync('/etc/letsencrypt/live/bharattube.xyz/fullchain.pem')
-// };
-// https.createServer(options, app).listen(443, () => {
-//     console.log('API server running on https://bharattube.xyz');
-// });
+// create prod server
+const options = {
+    key: fs.readFileSync('/etc/letsencrypt/live/bharattube.xyz/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/bharattube.xyz/fullchain.pem')
+};
+https.createServer(options, app).listen(443, () => {
+    console.log('API server running on https://bharattube.xyz');
+});
