@@ -40,7 +40,7 @@ export function downloadTorrentAndPlayVideo(torrenthash, clonedContainer) {
         })
     } else {
         //if torrent exist in client , show the file to the user
-        torrent.files[0].appendTo('#videocontainer', { autoplay: true, muted: true })
+        torrent.files[0]?.appendTo('#videocontainer', { autoplay: true, muted: true })
     }
 
 }
