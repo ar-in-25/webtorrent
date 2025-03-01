@@ -126,6 +126,7 @@ export function renderUploadedList(uploadedvideolist) {
         //add details if torrent already present in client
         if (getTorrent(video.magnetUri)) {
             let torrent = getTorrent(video.magnetUri)
+            torrent.removeAllListeners()
             updateTorrentDetails(torrent, clonedContainer)
             torrent.on('done', function () {
                 updateTorrentDetails(torrent, clonedContainer)
