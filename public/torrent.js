@@ -91,23 +91,23 @@ export function seedTorrent(file, clonedContainer) {
             }
             sendFiles(body).then(() => { getVideoDetails()})
 
-            updateTorrentDetails(torrent, clonedContainer)
+            // updateTorrentDetails(torrent, clonedContainer)
 
-            torrent.on('done', function () {
-                updateTorrentDetails(torrent, clonedContainer)
-            })
+            // torrent.on('done', function () {
+            //     updateTorrentDetails(torrent, clonedContainer)
+            // })
 
-            torrent.on('download', function () {
-                updateTorrentDetails(torrent, clonedContainer)
-            })
+            // torrent.on('download', function () {
+            //     updateTorrentDetails(torrent, clonedContainer)
+            // })
 
-            torrent.on('upload', () => {
-                updateTorrentDetails(torrent, clonedContainer)
-            })
+            // torrent.on('upload', () => {
+            //     updateTorrentDetails(torrent, clonedContainer)
+            // })
 
-            torrent.on('wire', () => {
-                updateTorrentDetails(torrent, clonedContainer)
-            })
+            // torrent.on('wire', () => {
+            //     updateTorrentDetails(torrent, clonedContainer)
+            // })
         })
     }
 

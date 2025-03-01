@@ -17,7 +17,7 @@ function getClone() {
 
     // Create the details div
     const detailsDiv = document.createElement('div');
-    detailsDiv.classList.add('details', 'hidden');
+    detailsDiv.classList.add('details');
 
     // Create the progress span
     const progressSpan = document.createElement('span');
@@ -123,12 +123,25 @@ export function renderUploadedList(uploadedvideolist) {
             downloadTorrentAndSeed(video.magnetUri, clonedContainer)
             clonedContainer.querySelector('.details').classList.remove('hidden')
         })
-        clonedContainer.querySelector('.pauseVideo').addEventListener('click', () => { let t = getTorrent(video.magnetUri); if (t) t.pause() })
-        clonedContainer.querySelector('.resumeVideo').addEventListener('click', () => { let t = getTorrent(video.magnetUri); if (t) t.resume() })
-        // clonedContainer.querySelector('.deleteVideo').addEventListener('click', () => deleteTorrent(video, clonedContainer))
         //add details if torrent already present in client
         if (getTorrent(video.magnetUri)) {
-            updateTorrentDetails(getTorrent(video.magnetUri), clonedContainer)
+            let torrent = getTorrent(video.magnetUri)
+            updateTorrentDetails(torrent, clonedContainer)
+            torrent.on('done', function () {
+                updateTorrentDetails(torrent, clonedContainer)
+            })
+
+            torrent.on('download', function () {
+                updateTorrentDetails(torrent, clonedContainer)
+            })
+
+            torrent.on('upload', () => {
+                updateTorrentDetails(torrent, clonedContainer)
+            })
+
+            torrent.on('wire', () => {
+                updateTorrentDetails(torrent, clonedContainer)
+            })
         }
         document.getElementById('downloadedvideocontainer').appendChild(clonedContainer);
     }
@@ -187,15 +200,15 @@ function deleteTorrent(video, clonedContainer) {
 }
 
 export function uploadFile(file) {
-    let clonedContainer = getClone()
-    clonedContainer.querySelector('.title').textContent = file.name
-    clonedContainer.querySelector('.size').textContent = 'Size : ' + formatDataSize(file.size)
-    clonedContainer.querySelector('.details').classList.remove('hidden')
-    clonedContainer.querySelector('.playVideo').classList.add('hidden')
-    // clonedContainer.querySelector('.deleteVideo').classList.add('hidden')
-    clonedContainer.querySelector('.seedVideo').classList.add('hidden')
-    clonedContainer.querySelector('.resumeVideo').classList.add('hidden')
-    clonedContainer.querySelector('.pauseVideo').classList.add('hidden')
-    document.getElementById('uploadedvideocontainer').appendChild(clonedContainer)
-    seedTorrent(file, clonedContainer)
+    // let clonedContainer = getClone()
+    // clonedContainer.querySelector('.title').textContent = file.name
+    // clonedContainer.querySelector('.size').textContent = 'Size : ' + formatDataSize(file.size)
+    // clonedContainer.querySelector('.details').classList.remove('hidden')
+    // clonedContainer.querySelector('.playVideo').classList.add('hidden')
+    // // clonedContainer.querySelector('.deleteVideo').classList.add('hidden')
+    // clonedContainer.querySelector('.seedVideo').classList.add('hidden')
+    // clonedContainer.querySelector('.resumeVideo').classList.add('hidden')
+    // clonedContainer.querySelector('.pauseVideo').classList.add('hidden')
+    // document.getElementById('uploadedvideocontainer').appendChild(clonedContainer)
+    seedTorrent(file)
 }
